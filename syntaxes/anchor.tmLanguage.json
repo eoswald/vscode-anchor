@@ -1,0 +1,129 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Anchor",
+  "scopeName": "source.anchor",
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#string" },
+    { "include": "#character" },
+    { "include": "#boolean" },
+    { "include": "#number" },
+    { "include": "#reader-macro" },
+    { "include": "#definition-fn" },
+    { "include": "#definition-macro" },
+    { "include": "#definition-type" },
+    { "include": "#keyword-call" },
+    { "include": "#builtin-call" },
+    { "include": "#operator" },
+    { "include": "#function-call" },
+    { "include": "#symbol" },
+    { "include": "#punctuation" }
+  ],
+  "repository": {
+    "comment": {
+      "name": "comment.line.semicolon.anchor",
+      "match": ";.*$"
+    },
+    "string": {
+      "name": "string.quoted.double.anchor",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.anchor",
+          "match": "\\\\(?:[ntr\\\\\"e]|x[0-9a-fA-F]{2}|[0-7]{1,3})"
+        }
+      ]
+    },
+    "character": {
+      "name": "constant.character.anchor",
+      "match": "#\\\\(?:[a-zA-Z][a-zA-Z0-9]*|[^\\t\\n])"
+    },
+    "boolean": {
+      "name": "constant.language.boolean.anchor",
+      "match": "#[tf](?=[\\s()\\[\\];\"'`,]|$)"
+    },
+    "number": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.anchor",
+          "match": "(?<=[\\s(\\[,`]|^)0[xX][0-9a-fA-F]+(?=[\\s()\\[\\];\"'`,]|$)"
+        },
+        {
+          "name": "constant.numeric.float.anchor",
+          "match": "(?<=[\\s(\\[,`]|^)[+-]?[0-9]+\\.[0-9]*(?=[\\s()\\[\\];\"'`]|$)"
+        },
+        {
+          "name": "constant.numeric.integer.anchor",
+          "match": "(?<=[\\s(\\[,`]|^)[+-]?[0-9]+(?=[\\s()\\[\\];\"'`,]|$)"
+        }
+      ]
+    },
+    "reader-macro": {
+      "patterns": [
+        {
+          "name": "punctuation.definition.reader-macro.anchor",
+          "match": "#,@|#,|#'|#`|,@|,|'|`"
+        }
+      ]
+    },
+    "definition-fn": {
+      "match": "(\\()\\s*(fn-c|fn)\\s+([^\\s()\\[\\];\"'`,]+)",
+      "captures": {
+        "1": { "name": "punctuation.bracket.anchor" },
+        "2": { "name": "keyword.control.bracket" },
+        "3": { "name": "entity.name.function.anchor" }
+      }
+    },
+    "definition-macro": {
+      "match": "(\\()\\s*(define-syntax)\\s+([^\\s()\\[\\];\"'`,]+)",
+      "captures": {
+        "1": { "name": "punctuation.bracket.anchor" },
+        "2": { "name": "keyword.control.bracket" },
+        "3": { "name": "entity.name.function.anchor" }
+      }
+    },
+    "definition-type": {
+      "match": "(\\()\\s*(struct|unpacked-struct|union|enum)\\s+([^\\s()\\[\\];\"'`,]+)",
+      "captures": {
+        "1": { "name": "punctuation.bracket.anchor" },
+        "2": { "name": "keyword.control.bracket" },
+        "3": { "name": "entity.name.function.anchor" }
+      }
+    },
+    "keyword-call": {
+      "match": "(?<=\\()\\s*(fn|fn-c|if|let|while|return|break|continue|do|block|set!|set-var!|define-syntax|macro-case|syntax-rules|with-syntax|include|ffi|alloc|sizeof|cast|ref|deref|with-arena|with-parent-arena|with-arena-checkpoint|arena-reset!|global|const|global-arena|quote|quasiquote|cond|when|unless|for|lambda|match|fn-ptr|call-ptr|call-ptr-c|embed-bytes|embed-string|c-const|struct|unpacked-struct|union|enum)(?=[\\s()\\[\\]]|$)",
+      "captures": {
+        "1": { "name": "keyword.control.anchor" }
+      }
+    },
+    "builtin-call": {
+      "match": "(?<=\\()\\s*(cons|car|cdr|set-car!|set-cdr!|null\\?|list|printf|sprintf|fprintf|arena-reset!|arena-remaining|arena-in\\?|int->f64|int->f32|f64->int|f32->int|f64->f32|f32->f64|kb|mb|gb)|(?=[\\s()\\[\\]]|$)",
+      "captures": {
+        "1": { "name": "support.function.anchor" }
+      }
+    },
+    "operator": {
+      "name": "keyword.operator.anchor",
+      "match": "(?<=[\\s(\\[])(\\+|-|\\*|/|%|u\\+|u-|u\\*|u/|u%|f\\+|f-|f\\*|f/|f32\\+|f32-|f32\\*|f32/|==|!=|<=|<|>=|>|u<=|u>|f==|f!=|f<=|f<|f>=|f>|f32==|f32!=|f32<=|f32<|f32>=|f32>|&&|\\|\\||!|band|bor|bxor|bnot|lshift|rshift)(?=[\\s()\\[\\]]|$)"
+    },
+    "function-call": {
+      "match": "(?<=\\()\\s*([^\\s()\\[\\];\"'`,#][^\\s()\\[\\];\"'`,]*)",
+      "captures": {
+        "1": { "name": "entity.name.function.call.anchor" }
+      }
+    },
+    "symbol": {
+      "name": "variable.other.anchor",
+      "match": "[^\\s()\\[\\];\"'`,#][^\\s()\\[\\];\"'`,]*"
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.bracket.anchor",
+          "match": "[()\\[\\]]"
+        }
+      ]
+    }
+  }
+}

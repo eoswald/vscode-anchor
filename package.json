@@ -1,0 +1,27 @@
+{
+  "name": "anchor-lang",
+  "displayName": "Anchor Language",
+  "description": "Syntax highlighting for the Anchor programming language",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": ["programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "anchor",
+        "aliases": ["Anchor", "anchor"],
+        "extensions": [".anc"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "anchor",
+        "scopeName": "source.anchor",
+        "path": "./syntaxes/anchor.tmLanguage.json"
+      }
+    ]
+  }
+}
