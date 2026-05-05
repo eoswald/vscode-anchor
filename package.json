@@ -6,7 +6,7 @@
   "engines": {
     "vscode": "^1.75.0"
   },
-  "categories": ["programming Languages"],
+  "categories": ["Programming Languages"],
   "contributes": {
     "languages": [
       {

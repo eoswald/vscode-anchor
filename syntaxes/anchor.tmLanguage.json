@@ -37,7 +37,7 @@
     },
     "character": {
       "name": "constant.character.anchor",
-      "match": "#\\\\(?:[a-zA-Z][a-zA-Z0-9]*|[^\\t\\n])"
+      "match": "#\\\\(?:[a-zA-Z][a-zA-Z0-9]*|[^ \\t\\n])"
     },
     "boolean": {
       "name": "constant.language.boolean.anchor",
@@ -51,7 +51,7 @@
         },
         {
           "name": "constant.numeric.float.anchor",
-          "match": "(?<=[\\s(\\[,`]|^)[+-]?[0-9]+\\.[0-9]*(?=[\\s()\\[\\];\"'`]|$)"
+          "match": "(?<=[\\s(\\[,`]|^)[+-]?[0-9]+\\.[0-9]*(?=[\\s()\\[\\];\"'`,]|$)"
         },
         {
           "name": "constant.numeric.integer.anchor",
@@ -71,7 +71,7 @@
       "match": "(\\()\\s*(fn-c|fn)\\s+([^\\s()\\[\\];\"'`,]+)",
       "captures": {
         "1": { "name": "punctuation.bracket.anchor" },
-        "2": { "name": "keyword.control.bracket" },
+        "2": { "name": "keyword.control.anchor" },
         "3": { "name": "entity.name.function.anchor" }
       }
     },
@@ -79,16 +79,16 @@
       "match": "(\\()\\s*(define-syntax)\\s+([^\\s()\\[\\];\"'`,]+)",
       "captures": {
         "1": { "name": "punctuation.bracket.anchor" },
-        "2": { "name": "keyword.control.bracket" },
-        "3": { "name": "entity.name.function.anchor" }
+        "2": { "name": "keyword.control.anchor" },
+        "3": { "name": "entity.name.function.macro.anchor" }
       }
     },
     "definition-type": {
       "match": "(\\()\\s*(struct|unpacked-struct|union|enum)\\s+([^\\s()\\[\\];\"'`,]+)",
       "captures": {
         "1": { "name": "punctuation.bracket.anchor" },
-        "2": { "name": "keyword.control.bracket" },
-        "3": { "name": "entity.name.function.anchor" }
+        "2": { "name": "keyword.control.anchor" },
+        "3": { "name": "entity.name.type.anchor" }
       }
     },
     "keyword-call": {
@@ -98,14 +98,14 @@
       }
     },
     "builtin-call": {
-      "match": "(?<=\\()\\s*(cons|car|cdr|set-car!|set-cdr!|null\\?|list|printf|sprintf|fprintf|arena-reset!|arena-remaining|arena-in\\?|int->f64|int->f32|f64->int|f32->int|f64->f32|f32->f64|kb|mb|gb)|(?=[\\s()\\[\\]]|$)",
+      "match": "(?<=\\()\\s*(cons|car|cdr|set-car!|set-cdr!|null\\?|list|printf|sprintf|fprintf|arena-reset!|arena-remaining|arena-in\\?|int->f64|int->f32|f64->int|f32->int|f64->f32|f32->f64|kb|mb|gb)(?=[\\s()\\[\\]]|$)",
       "captures": {
         "1": { "name": "support.function.anchor" }
       }
     },
     "operator": {
       "name": "keyword.operator.anchor",
-      "match": "(?<=[\\s(\\[])(\\+|-|\\*|/|%|u\\+|u-|u\\*|u/|u%|f\\+|f-|f\\*|f/|f32\\+|f32-|f32\\*|f32/|==|!=|<=|<|>=|>|u<=|u>|f==|f!=|f<=|f<|f>=|f>|f32==|f32!=|f32<=|f32<|f32>=|f32>|&&|\\|\\||!|band|bor|bxor|bnot|lshift|rshift)(?=[\\s()\\[\\]]|$)"
+      "match": "(?<=[\\s(\\[])(\\+|-|\\*|/|%|u\\+|u-|u\\*|u/|u%|f\\+|f-|f\\*|f/|f32\\+|f32-|f32\\*|f32/|==|!=|<=|<|>=|>|u<=|u<|u>=|u>|f==|f!=|f<=|f<|f>=|f>|f32==|f32!=|f32<=|f32<|f32>=|f32>|&&|\\|\\||!|band|bor|bxor|bnot|lshift|rshift)(?=[\\s()\\[\\]]|$)"
     },
     "function-call": {
       "match": "(?<=\\()\\s*([^\\s()\\[\\];\"'`,#][^\\s()\\[\\];\"'`,]*)",

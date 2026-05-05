@@ -18,6 +18,7 @@ Syntax highlighting and language support for the [Anchor](https://github.com/all
 - **Builtins** - `cons`, `car`, `cdr`, `printf`, `list`, `null?`, `kb`/`mb`/`gb`, type conversions (`int->f64`, etc.)
 - **Operators** - all prefix arithmetic (`+`, `f+`, `u+`, `f32+`), comparison (`==`, `<`, `f>=`), bitwise (`band`, `lshift`), and logical (`&&`, `||`, `!`)
 - **Literals** - integers, hex (`0xFF`), floats, strings with escape sequences, character literals (`#\a`, `#\newline`), booleans (`#t`/`#f`)
+- **Reader macros** - `'`, `` ` ``, `,`, `,@`, `#'`, `` #` ``, `#,`, `#,@`
 
 ## Installation
 
