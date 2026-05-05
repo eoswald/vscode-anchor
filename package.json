@@ -1,12 +1,16 @@
 {
   "name": "anchor-lang",
   "displayName": "Anchor Language",
-  "description": "Syntax highlighting for the Anchor programming language",
-  "version": "0.1.0",
+  "description": "Syntax highlighting and auto-indent for the Anchor programming language",
+  "version": "0.2.0",
   "engines": {
     "vscode": "^1.75.0"
   },
   "categories": ["Programming Languages"],
+  "activationEvents": [
+    "onLanguage:anchor"
+  ],
+  "main": "./out/extension.js",
   "contributes": {
     "languages": [
       {
@@ -22,6 +26,19 @@
         "scopeName": "source.anchor",
         "path": "./syntaxes/anchor.tmLanguage.json"
       }
-    ]
+    ],
+    "configurationDefaults": {
+      "[anchor]": {
+        "editor.formatOnType": true
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0",
+    "typescript": "^5.0.0"
   }
 }

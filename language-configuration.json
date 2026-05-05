@@ -17,7 +17,18 @@
     ["\"", "\""]
   ],
   "indentationRules": {
-    "increaseIndentPattern": "^\\s*\\((?!.*\\)).*$",
-    "decreaseIndentPattern": "^\\s*\\)\\s*$"
-  }
+    "increaseIndentPattern": "^\\s*[(\\[](?!.*[)\\]]\\s*$).*$",
+    "decreaseIndentPattern": "^\\s*[)\\]]\\s*$"
+  },
+  "onEnterRules": [
+    {
+      "beforeText": "^\\s*[(\\[]\\s*$",
+      "action": { "indent": "indent" }
+    },
+    {
+      "beforeText": "[)\\]]\\s*$",
+      "action": { "indent": "none" }
+    }
+  ],
+  "wordPattern": "[^\\s()\\[\\];\"'`,#]+"
 }
